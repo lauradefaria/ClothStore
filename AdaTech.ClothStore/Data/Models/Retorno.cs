@@ -4,15 +4,15 @@
     {
         public static int _id = 1;
 
-        public Retorno(DateTime returnDate, Venda sale)
+        public Retorno(DateTime dataRetorno, Venda vendas)
         {
             Id = _id++;
-            ReturnDate = returnDate;
-            Sale = sale;
+            DataRetorno = dataRetorno;
+            Vendas = vendas;
         }
 
         public int Id { get; set; }
-        public DateTime ReturnDate { get; set; }
-        public Venda Sale { get; set; }
+        public DateTime DataRetorno { get; set; }
+        public Venda Vendas { get; set; }
     }
 }

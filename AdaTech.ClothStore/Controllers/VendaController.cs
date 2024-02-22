@@ -27,17 +27,17 @@ namespace AdaTech.ClothStore.Controllers
         [HttpPost(Name = "AddSale")]
         public IActionResult AddSale([FromBody] CreateVendaRequest saleRequest)
         {
-            foreach (var saleItem in saleRequest.SaleItems)
+            foreach (var saleItem in saleRequest.ItemVendido)
             {
-                var item = _itemRepository.GetById(saleItem.ProductId);
+                var item = _itemRepository.GetById(saleItem.IdProduto);
 
-                if (!item.Sizes.Contains(saleItem.Size.ToUpper()))
+                if (!item.Tamanho.Contains(saleItem.Tamanho.ToUpper()))
                 {
-                    return BadRequest($"Size {saleItem.Size} is not available for item with ID {saleItem.ProductId}.");
+                    return BadRequest($"Size {saleItem.Tamanho} is not available for item with ID {saleItem.IdProduto}.");
                 }
             }
 
-            Venda sale = new Venda(saleRequest.SaleDate, saleRequest.CustomerName, saleRequest.SaleItems);
+            Venda sale = new Venda(saleRequest.DataVenda, saleRequest.NomeCliente, saleRequest.ItemVendido);
 
             _saleRepository.Add(sale);
             return CreatedAtAction("GetSaleById", new { saleId = sale.Id }, new { message = "Resource created successfully.", data = sale });

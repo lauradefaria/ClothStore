@@ -11,10 +11,10 @@ namespace AdaTech.ClothStore.Data.Repository
 
         public ItemRepositoryMemory(List<Item> items)
         {
-            _items.Add(new Item("T-shirt", TipoItem.Blusa, new string[] { "P", "M", "G" }, 29.99m));
-            _items.Add(new Item("Jeans", TipoItem.Calca, new string[] { "34", "36", "38", "40" }, 79.99m));
-            _items.Add(new Item("Sneakers", TipoItem.Sapato, new string[] { "36", "37", "38", "39", "40" }, 59.99m));
-            _items.Add(new Item("Dress", TipoItem.Vestido, new string[] { "PP", "P", "M", "G", "GG" }, 89.99m));
+            _items.Add(new Item("Camiseta", TipoItem.Camiseta, new string[] { "P", "M", "G" }, 39.99m));
+            _items.Add(new Item("Calca", TipoItem.Calca, new string[] { "34", "36", "38", "40" }, 109.99m));
+            _items.Add(new Item("Sapato", TipoItem.Sapato, new string[] { "36", "37", "38", "39", "40" }, 69.99m));
+            _items.Add(new Item("Vestido", TipoItem.Vestido, new string[] { "PP", "P", "M", "G", "GG" }, 99.99m));
         }
 
         public void Add(Item item)
@@ -28,18 +28,18 @@ namespace AdaTech.ClothStore.Data.Repository
             _items.Remove(item);
         }
 
-        public IEnumerable<Item> GetAll(string? size, TipoItem? type)
+        public IEnumerable<Item> GetAll(string? tamanho, TipoItem? tipo)
         {
             IEnumerable<Item> items = _items;
 
-            if (!string.IsNullOrEmpty(size))
+            if (!string.IsNullOrEmpty(tamanho))
             {
-                items = items.Where(i => i.Sizes.Contains(size.ToUpper()));
+                items = items.Where(i => i.Tamanho.Contains(tamanho.ToUpper()));
             }
 
-            if (type.HasValue)
+            if (tipo.HasValue)
             {
-                items = items.Where(i => i.Type == type);
+                items = items.Where(i => i.Tipo == tipo);
             }
 
             return items;
@@ -49,7 +49,7 @@ namespace AdaTech.ClothStore.Data.Repository
         {
             Item item = _items.FirstOrDefault(i => i.Id == id);
             if (item == null)
-                throw new ClothStoreException($"The item with ID {id} was not found.", 404);
+                throw new ClothStoreException($"O item com ID {id} não foi encontrado.", 404);
             return item;
         }
 
@@ -58,10 +58,10 @@ namespace AdaTech.ClothStore.Data.Repository
             var existingItem = _items.FirstOrDefault(i => i.Id == item.Id);
             if (existingItem != null)
             {
-                existingItem.Name = item.Name;
-                existingItem.Type = item.Type;
-                existingItem.Sizes = item.Sizes;
-                existingItem.Price = item.Price;
+                existingItem.Nome = item.Nome;
+                existingItem.Preco = item.Preco;
+                existingItem.Tipo = item.Tipo;
+                existingItem.Tamanho = item.Tamanho;
             }
         }
     }

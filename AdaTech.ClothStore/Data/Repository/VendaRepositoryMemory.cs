@@ -6,30 +6,30 @@ namespace AdaTech.ClothStore.Data.Repository
 {
     public class VendaRepositoryMemory : IVendaRepository
     {
-        private readonly List<Venda> _sales = new List<Venda>();
+        private readonly List<Venda> _vendas = new List<Venda>();
 
-        public void Add(Venda sale)
+        public void Add(Venda vendas)
         {
-            _sales.Add(sale);
+            _vendas.Add(vendas);
         }
 
-        public void Delete(Venda sale)
+        public void Delete(Venda vendas)
         {
-            _sales.Remove(sale);
+            _vendas.Remove(vendas);
         }
 
         public IEnumerable<Venda> GetAll()
         {
-            return _sales;
+            return _vendas;
         }
 
         public Venda GetById(int id)
         {
-            Venda sale = _sales.FirstOrDefault(s => s.Id == id);
-            if (sale == null)
-                throw new ClothStoreException($"The sale with ID {id} was not found.", 404);
+            Venda venda = _vendas.FirstOrDefault(s => s.Id == id);
+            if (venda == null)
+                throw new ClothStoreException($"A venda de ID {id} não foi encontrada.", 404);
 
-            return sale;
+            return venda;
         }
     }
 }

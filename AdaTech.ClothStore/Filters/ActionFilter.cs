@@ -13,12 +13,12 @@ namespace AdaTech.ClothStore.Filters
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            _logger.LogInformation($"Action started: {context.ActionDescriptor.DisplayName} - {DateTime.Now}");
+            _logger.LogInformation($"Action iniciada: {context.ActionDescriptor.DisplayName} - {DateTime.Now}");
         }
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
-            _logger.LogInformation($"Action completed: {context.ActionDescriptor.DisplayName} - {DateTime.Now}");
+            _logger.LogInformation($"Action finalizada: {context.ActionDescriptor.DisplayName} - {DateTime.Now}");
         }
     }
 }

@@ -4,18 +4,18 @@
     {
         public static int _id = 1;
 
-        public Venda(DateTime saleDate, string customerName, ItemVenda[] saleItems)
+        public Venda(DateTime dataVenda, string nomeCliente, ItemVenda[] itemVendido)
         {
             Id = _id++;
-            SaleDate = saleDate;
-            CustomerName = customerName;
-            SaleItems = saleItems;
+            DataVenda = dataVenda;
+            NomeCliente = nomeCliente;
+            ItemVendido = itemVendido;
         }
 
         public int Id { get; set; }
-        public DateTime SaleDate { get; set; }
-        public string CustomerName { get; set; }
-        public ItemVenda[] SaleItems { get; set; }
-        public decimal TotalAmount => SaleItems.Sum(item => item.Subtotal);
+        public DateTime DataVenda { get; set; }
+        public string NomeCliente { get; set; }
+        public ItemVenda[] ItemVendido { get; set; }
+        public decimal Total => ItemVendido.Sum(item => item.Subtotal);
     }
 }

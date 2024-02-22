@@ -30,7 +30,7 @@ namespace AdaTech.ClothStore.Controllers
         {
             Venda sale = _saleRepository.GetById(saleId);
 
-            Retorno returnSale = new Retorno(returnRequest.Date, sale);
+            Retorno returnSale = new Retorno(returnRequest.Data, sale);
 
             _returnRepository.Add(returnSale);
             _saleRepository.Delete(sale);

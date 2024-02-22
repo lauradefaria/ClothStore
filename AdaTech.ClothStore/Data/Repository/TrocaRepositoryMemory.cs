@@ -6,25 +6,25 @@ namespace AdaTech.ClothStore.Data.Repository
 {
     public class TrocaRepositoryMemory : ITrocaRepository
     {
-        private readonly List<Troca> _exchange = new List<Troca>();
+        private readonly List<Troca> _troca = new List<Troca>();
 
-        public void Add(Venda sale, Troca exchangeSale)
+        public void Add(Venda sale, Troca trocaMercadoria)
         {
-            DateTime finalExchangeDate = sale.SaleDate.AddDays(7);
-            if (exchangeSale.ExchangeDate > finalExchangeDate)
-                throw new ClothStoreException("Exchanges are allowed only within 7 business days after the sale date.", 500);
+            DateTime dataFinalTroca = sale.DataVenda.AddDays(14);
+            if (trocaMercadoria.DataTroca > dataFinalTroca)
+                throw new ClothStoreException("Trocas são permitidas até 14 dias úteis.", 500);
 
-            _exchange.Add(exchangeSale);
+            _troca.Add(trocaMercadoria);
+        }
+        public Troca GetById(int id)
+        {
+            return _troca.FirstOrDefault(i => i.Id == id);
         }
 
         public IEnumerable<Troca> GetAll()
         {
-            return _exchange;
+            return _troca;
         }
 
-        public Troca GetById(int id)
-        {
-            return _exchange.FirstOrDefault(i => i.Id == id);
-        }
     }
 }

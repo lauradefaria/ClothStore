@@ -5,6 +5,6 @@ namespace AdaTech.ClothStore.RequestModels
     public class CreateRetornoTrocaRequest
     {
         [Required]
-        public DateTime Date { get; set; }
+        public DateTime Data { get; set; }
     }
 }

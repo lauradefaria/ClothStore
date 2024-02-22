@@ -20,7 +20,7 @@ namespace AdaTech.ClothStore.Filters
             {
                 var errorResult = new ErroResponse
                 {
-                    ErrorMessage = clothStoreSalesApiException.Message,
+                    ErroMessage = clothStoreSalesApiException.Message,
                     StatusCode = clothStoreSalesApiException.StatusCode
                 };
 
@@ -29,13 +29,13 @@ namespace AdaTech.ClothStore.Filters
                     StatusCode = errorResult.StatusCode
                 };
 
-                _logger.LogWarning(context.Exception, "Exceção capturada pelo exception filter");
+                _logger.LogWarning(context.Exception, "Exceção capturada pelo filter");
             }
             else
             {
                 var errorResult = new ErroResponse
                 {
-                    ErrorMessage = "Internal Server Error",
+                    ErroMessage = "Internal Server Error",
                     StatusCode = StatusCodes.Status500InternalServerError
                 };
                 context.Result = new JsonResult(errorResult)
@@ -43,7 +43,7 @@ namespace AdaTech.ClothStore.Filters
                     StatusCode = errorResult.StatusCode
                 };
 
-                _logger.LogError(context.Exception, "Exceção capturada pelo exception filter");
+                _logger.LogError(context.Exception, "Exceção capturada pelo filter");
             }
         }
     }

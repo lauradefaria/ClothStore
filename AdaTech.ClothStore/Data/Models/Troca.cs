@@ -4,15 +4,15 @@
     {
         public static int _id = 1;
 
-        public Troca(DateTime exchangeDate, Venda sale)
+        public Troca(DateTime dataTroca, Venda vendas)
         {
             Id = _id++;
-            ExchangeDate = exchangeDate;
-            Sale = sale;
+            DataTroca = dataTroca;
+            Vendas = vendas;
         }
 
         public int Id { get; set; }
-        public DateTime ExchangeDate { get; set; }
-        public Venda Sale { get; set; }
+        public DateTime DataTroca { get; set; }
+        public Venda Vendas { get; set; }
     }
 }

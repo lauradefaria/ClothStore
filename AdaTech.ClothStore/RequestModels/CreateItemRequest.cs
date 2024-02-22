@@ -6,12 +6,12 @@ namespace AdaTech.ClothStore.RequestsModels
     public class CreateItemRequest
     {
         [Required]
-        public string Name { get; set; }
+        public string Nome { get; set; }
         [Required]
-        public TipoItem Type { get; set; }
+        public TipoItem Tipo { get; set; }
         [Required]
-        public string[] Sizes { get; set; }
+        public string[] Tamanho { get; set; }
         [Required]
-        public decimal Price { get; set; }
+        public decimal Preco { get; set; }
     }
 }

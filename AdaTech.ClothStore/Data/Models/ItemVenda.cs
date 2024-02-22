@@ -2,18 +2,18 @@
 {
     public class ItemVenda
     {
-        public ItemVenda(int productId, string size, int quantity, decimal unitPrice)
+        public ItemVenda(int idProduto, string tamanho, int quantidade, decimal precoItem)
         {
-            ProductId = productId;
-            Size = size.ToUpper();
-            Quantity = quantity;
-            UnitPrice = unitPrice;
+            IdProduto = idProduto;
+            Tamanho = tamanho.ToUpper();
+            Quantidade = quantidade;
+            PrecoItem = precoItem;
         }
 
-        public int ProductId { get; set; }
-        public string Size { get; set; }
-        public int Quantity { get; set; }
-        public decimal UnitPrice { get; set; }
-        public decimal Subtotal => Quantity * UnitPrice;
+        public int IdProduto { get; set; }
+        public string Tamanho { get; set; }
+        public int Quantidade { get; set; }
+        public decimal PrecoItem { get; set; }
+        public decimal Subtotal => Quantidade * PrecoItem;
     }
 }

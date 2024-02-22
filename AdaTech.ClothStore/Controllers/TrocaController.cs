@@ -29,7 +29,7 @@ namespace AdaTech.ClothStore.Controllers
         {
             Venda sale = _saleRepository.GetById(saleId);
 
-            Troca exchangeSale = new Troca(exchangeRequest.Date, sale);
+            Troca exchangeSale = new Troca(exchangeRequest.Data, sale);
 
             _exchangeRepository.Add(sale, exchangeSale);
             _saleRepository.Delete(sale);

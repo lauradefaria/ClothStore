@@ -6,10 +6,10 @@ namespace AdaTech.ClothStore.RequestModels
     public class CreateVendaRequest
     {
         [Required]
-        public DateTime SaleDate { get; set; }
+        public DateTime DataVenda { get; set; }
         [Required]
-        public string CustomerName { get; set; }
+        public string NomeCliente { get; set; }
         [Required]
-        public ItemVenda[] SaleItems { get; set; }
+        public ItemVenda[] ItemVendido { get; set; }
     }
 }
